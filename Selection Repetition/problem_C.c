@@ -14,18 +14,16 @@ int main() {
 
     scanf("%hu", &T);
     for (unsigned short i = 1; i <= T; i++) {
-        unsigned short gcd = 0;
+        int gcd = 0;
 
         scanf("%hu", &N);
         for (int i = 0; i < N; i++) {
-            long long int num;
-            scanf(" %lld", &num);
-
+            int num;
+            scanf(" %d", &num);
             if (i == 0) gcd = num;
             else gcd = GCD(gcd, num);
         }
-
-        printf("Case #%hu: %hu\n", i, gcd);
+        printf("Case #%hu: %d\n", i, gcd);
     }
     return 0;
 }
