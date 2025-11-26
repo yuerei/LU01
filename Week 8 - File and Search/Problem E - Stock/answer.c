@@ -39,12 +39,12 @@ int main() {
             char qOperation[5];
             char qProduct[51];
             int qQuantity;
-            fscanf(fp, "%[^#]#%[^#]#%d", qOperation, qProduct, &qQuantity); fgetc(fp);
+            fscanf(fp, " %[^#]#%[^#]#%d", qOperation, qProduct, &qQuantity);
             #ifdef DEBUG
             printf("%s - %s - %d\n", qOperation, qProduct, qQuantity);
             #endif
 
-            int res = search(products, query, qProduct);
+            int res = search(products, productCount, qProduct);
             if (res > -1) {
                 #ifdef DEBUG
                 printf("  > DEBUG : %s %d\n", products[res], stocks[res]);
