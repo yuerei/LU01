@@ -5,58 +5,42 @@
  */
 // #define DEBUG
 
-void swap(int* a, int* b) {
-    int t = *a;
+void swap(long long int* a, long long int* b) {
+    long long int t = *a;
     *a = *b;
     *b = t;
 }
 
-int partition(int arr[], int low, int high) {
-    int pivot = arr[high];
-    int i = (low - 1);
-
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] <= pivot) {
-            i++;
-            swap(&arr[i], &arr[j]);
-        }
-    }
-    swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
-}
-
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
+void bubbleSort(unsigned long long arr[], int N){
+        for(int i = 0; i < N; i++) for(int j = i + 1; j < N; j++) if(arr[j] < arr[i]) swap(&arr[i], &arr[j]);
 }
 
 int main() {
-    int missionCount;
-    scanf("%d", &missionCount);
+    short missionCount;
+    scanf("%hd", &missionCount);
 
-    int missions[missionCount];
-    int passed = 0;
+    unsigned long long missions[missionCount];
+    short passed = 0;
 
     for (int t = 0; t < missionCount; t++) {
-        scanf("%d", &missions[t]);
+        scanf("%llu", &missions[t]);
     }
 
-    int power;
-    scanf("%d", &power);
+    unsigned long long power;
+    scanf("%llu", &power);
 
-    quickSort(missions, 0, missionCount - 1);
+    if (missionCount > 0) {
+        bubbleSort(missions, missionCount);
+    }
 
     for (int t = 0; t < missionCount; t++) {
         if (missions[t] <= power) {
             passed++;
             power -= missions[t];
-        } else if (missions[t] > power) break;
+        } else break;
     }
 
-    printf("%d", passed);
+    printf("%hd\n", passed);
     
     return 0;
 }
